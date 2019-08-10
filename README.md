@@ -13,10 +13,10 @@
 
 ### Google Setup
 
-https://console.cloud.google.com
-project name: mw-infra
-zone: europe-west3-a
-cluster: super-cheap-cluster-1
+- https://console.cloud.google.com
+- project name: mw-infra
+- zone: europe-west3-a
+- cluster: super-cheap-cluster-1
 
 **Cluster and node pool**
 - 3-node pool using the cheapest instance type (f1-micro).
@@ -45,17 +45,25 @@ cluster: super-cheap-cluster-1
 
 ### express-test-app service
 To build image:
-`docker build -t gcr.io/mw-infra/express-test-app:latest .`
+```
+docker build -t gcr.io/mw-infra/express-test-app:latest .
+```
 
 To run locally:
-`docker run -p 8080:8080 gcr.io/mw-infra/express-test-app:latest`
+```
+docker run -p 8080:8080 gcr.io/mw-infra/express-test-app:latest
+```
 
 To push to GCR:
-`docker push gcr.io/mw-infra/express-test-app:latest`
+```
+docker push gcr.io/mw-infra/express-test-app:latest
+```
 
 ### nginx service
 To find public ips run:
-`kubectl get node -o yaml`
+```
+kubectl get node -o yaml
+```
 and look for:
 ```
  - address: ...
