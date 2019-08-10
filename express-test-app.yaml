@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-test-app
+  labels:
+    app: express-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express-test-app
+  template:
+    metadata:
+      labels:
+        app: express-test-app
+    spec:
+      containers:
+      - name: express-test-app
+        image: gcr.io/mw-infra/express-test-app:latest
+        ports:
+        - containerPort: 8080
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: express-test-app
+spec:
+  selector:
+    app: express-test-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
