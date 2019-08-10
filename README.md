@@ -74,21 +74,31 @@ and look for:
 https://github.com/calebdoxsey/kubernetes-cloudflare-sync
 
 To set secrets for Cloudflare:
-`kubectl create secret generic cloudflare --from-literal=email='EMAIL' --from-literal=api-key='API_KEY'`
+```
+kubectl create secret generic cloudflare --from-literal=email='EMAIL' --from-literal=api-key='API_KEY'
+```
 
 Additionaly before applying this service:
-`kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user YOUR_EMAIL_ADDRESS_HERE`
+```
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user YOUR_EMAIL_ADDRESS_HERE
+```
 
 ### Useful commands
 
 To apply this configuration run:
-`kubectl apply -f .`
+```
+kubectl apply -f .
+```
 
 To test that it's running:
-`kubectl get pod`
+```
+kubectl get pod
+```
 
 And we can also create a proxy API so that we can access it:
-`kubectl proxy`
+```
+kubectl proxy
+```
 
 And then visit:
 http://localhost:8001/api/v1/namespaces/default/services/express-test-app/proxy/
